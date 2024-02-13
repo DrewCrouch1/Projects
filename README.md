@@ -15,12 +15,12 @@ The Network Security Group (NIC NSG) is configured to allow all inbound traffic 
 ![LA2](https://github.com/DrewCrouch1/Sentinel-Live-Attack-Lab/assets/158229796/c0b86fb6-c0b2-49ac-a312-b64622a62795)
 
 
-###Log Collection and Analysis:
+### Log Collection and Analysis:
 
 A Log Analytics Workspace is created to collect data from the Azure virtual machine.
 Sentinel is set up and connected to the Log Analytics Workspace for advanced threat detection and analysis.
 
-###Failed Login Tracking:
+### Failed Login Tracking:
 
 The VM's firewall is deliberately taken down to allow outside connections.
 Event ID 4625 is monitored to track failed RDP login attempts.
@@ -30,7 +30,7 @@ Event ID 4625 is monitored to track failed RDP login attempts.
 ![LA4](https://github.com/DrewCrouch1/Sentinel-Live-Attack-Lab/assets/158229796/67a6ec45-c4d9-4b0f-85c6-7b0f3e69f1a7)
 
 
-###Location Data Extraction:
+### Location Data Extraction:
 
 A PowerShell script is executed to extract Security events with Event ID 4625.
 The script utilizes the ipgeolocation.io API to transform IP addresses into detailed location data (country, city, state, province, local currency, latitude, longitude, company details, ISP lookup, language, and zip code).
@@ -40,14 +40,14 @@ The script utilizes the ipgeolocation.io API to transform IP addresses into deta
 ![LA6](https://github.com/DrewCrouch1/Sentinel-Live-Attack-Lab/assets/158229796/aa78f294-e7e5-4079-9a90-74962cdcbdbf)
 
 
-###Custom Log Creation:
+### Custom Log Creation:
 
 The PowerShell script appends the extracted data to a custom log file (failed_rdp.log).
 
 ![LA7](https://github.com/DrewCrouch1/Sentinel-Live-Attack-Lab/assets/158229796/26c15881-5008-432e-87e8-7a28d5222bf1)
 
 
-###Sentinel Integration:
+### Sentinel Integration:
 
 A custom log in Azure is created to capture the failed_rdp.log file and bring it into Sentinel.
 Log Analytics Workspace is used to import and store the custom log data.
@@ -56,7 +56,7 @@ Log Analytics Workspace is used to import and store the custom log data.
 
 ![LA9](https://github.com/DrewCrouch1/Sentinel-Live-Attack-Lab/assets/158229796/dc5864a0-d7f4-4894-a725-f54bf91adc1c)
 
-###Visualization:
+### Visualization:
 
 A KQL (Kusto Query Language) query is crafted to separate raw data into columns for use within Sentinel.
 The query is executed with a visualization that creates a heat map of failed RDP attempts by location.
@@ -66,6 +66,6 @@ The query is executed with a visualization that creates a heat map of failed RDP
 ![LA12](https://github.com/DrewCrouch1/Sentinel-Live-Attack-Lab/assets/158229796/a7b66804-6e76-4b97-9dfc-f94c324c0a8c)
 
 
-###Note:
+### Note:
 Due to API limitations, the ipgeolocation.io API has a daily limit of 1,000 requests. Exercise caution to avoid exceeding this limit.
 

@@ -1,11 +1,11 @@
-#Microsoft Azure/Sentinel Honeypot
+# Microsoft Azure/Sentinel Honeypot
 
-##Description:
+## Description:
 This GitHub repository hosts a project that sets up a mini honeypot using Microsoft Azure and Sentinel, designed to capture and analyze failed Remote Desktop Protocol (RDP) login attempts. The project utilizes Azure infrastructure, Log Analytics Workspace, and Sentinel for log collection, analysis, and visualization.
 
-##Key Features:
+## Key Features:
 
-###Honeypot Configuration:
+### Honeypot Configuration:
 
 A Windows 10 Virtual Machine is created on Microsoft Azure.
 The Network Security Group (NIC NSG) is configured to allow all inbound traffic for any destination port or protocol on the virtual machine.
